@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.7.2'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.31'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    localPath '/Applications/Android Studio 4.2 Preview.app/Contents'
+    setPlugins 'java', 'org.jetbrains.kotlin', 'org.intellij.groovy', 'org.jetbrains.android', 'com.android.layoutlib.standard'
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
